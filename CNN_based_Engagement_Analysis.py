@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# data 중 size 다른 image shape 에러 발생
+#
+
 from pycm import *
 import os
 import pandas as pd

@@ -29,6 +29,8 @@ import torch.backends.cudnn as cudnn
 from pycm import *
 import pycm
 
+# image data 중 shape 다른 데이터 존재하여 에러나는 듯
+# line 71 'def Extract_HOG_fd()' 내 'torch_Tensor=torch_Tensor.reshape(100,100,3)' 에서 에러 발생
 
 torch.backends.cudnn.deterministic = True
 

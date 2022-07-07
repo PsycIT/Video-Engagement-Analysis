@@ -11,6 +11,8 @@ import os
 import math
 import pycm
 
+# 정상구동
+
 # configurations
 path = "wacv2016/dataset"
 path_dest = "samples"

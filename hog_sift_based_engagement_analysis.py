@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 #importing required libraries
 import cv2
 import numpy as np
@@ -21,34 +18,22 @@ from sklearn.svm import SVC
 import shutil
 from sklearn.model_selection import train_test_split
 import pandas as pd
+from pycm import *
 import pycm
-get_ipython().run_line_magic('matplotlib', 'inline')
-
-
-# In[2]:
+# get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 sift = cv2.xfeatures2d.SIFT_create(nfeatures =29)
-
-
-# In[3]:
 
 
 # creating instance of labelencoder
 labelencoder = LabelEncoder()
 
 
-# In[4]:
-
-
 path1=r'C:\Users\occisor\Downloads\Engagement_recognition\wacv2016-master\2'
 path2=r'C:\Users\occisor\Downloads\Engagement_recognition\wacv2016-master\3'
 dest_path1=r'C:\Users\occisor\Downloads\Engagement_recognition\wacv2016-master\dataset\2'
 dest_path2=r'C:\Users\occisor\Downloads\Engagement_recognition\wacv2016-master\dataset\3'
-
-
-# In[5]:
-
 
 def copy_files(src_path,dest_path):
     files=os.listdir(src_path)
@@ -66,8 +51,6 @@ def copy_files(src_path,dest_path):
         if len(os.listdir(dest_path))>=412:
             break
 
-
-# In[ ]:
 
 
 path=r'C:\Users\occisor\Downloads\Engagement_recognition\wacv2016-master\dataset'
@@ -119,52 +102,22 @@ for k in range(10):
     print(k)
 
 
-# In[7]:
-
-
 accu
 
-
-# In[8]:
-
-
 accu.mean()
-
-
-# In[ ]:
 
 
 y_pred = np.asarray(y_pred)
 y_pred = y_pred.tolist()
 
 
-# In[ ]:
-
-
 y_test = np.asarray(y_test)
 y_test = y_test.tolist()
 
 
-# In[ ]:
+cm = ConfusionMatrix(y_test, y_pred,digit=5)
 
-
-cm = ConfusionMatrix(y_label, y_pred,digit=5)
-
-
-# In[ ]:
-
-
-cm.ACC
-
-
-# In[ ]:
-
-
-cm.GI
-
-
-# In[ ]:
-
-
-cm.AGF
-
+print(cm.print_matrix())
+print(cm.ACC)
+print(cm.GI)
+print(cm.AGF)
